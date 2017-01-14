@@ -38,11 +38,11 @@ tk.Checkbutton(root, text="nobler", variable=var2).grid(row=3, column =4, sticky
 var3 = tk.IntVar()
 tk.Checkbutton(root, text="suffer", variable=var3).grid(row=4, column =4, sticky=tk.W)
 var4 = tk.IntVar()
-tk.Checkbutton(root, text="slings", variable=var3).grid(row=5, column =4, sticky=tk.W)
+tk.Checkbutton(root, text="slings", variable=var4).grid(row=5, column =4, sticky=tk.W)
 var5 = tk.IntVar()
-tk.Checkbutton(root, text="arrows", variable=var3).grid(row=6, column =4, sticky=tk.W)
+tk.Checkbutton(root, text="arrows", variable=var5).grid(row=6, column =4, sticky=tk.W)
 var6 = tk.IntVar()
-tk.Checkbutton(root, text="fortune", variable=var3).grid(row=7, column =4, sticky=tk.W)
+tk.Checkbutton(root, text="fortune", variable=var6).grid(row=7, column =4, sticky=tk.W)
 
 
 tk.mainloop()
