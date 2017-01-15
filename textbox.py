@@ -6,6 +6,20 @@ h = 40
 w = 100
 instructions = "Select and analyze a theme from 'Hamlet' by William Shakespeare. How does the use of literary devices support the theme you have selected?"
 # msg = Label(root, justify=LEFT, pady=10, text=instructions)
+def enter(event):
+    # replace with update checklist function
+    print("update checklist") 
+def bye(event):
+    print("bye")
+
+def checked(event, x):
+    print(x)
+    # replace with update article lists panel function
+    if x is 0:
+    	print('checked')
+    if x is 1:
+    	print('unchecked')
+
 msg = tk.Message(root, text = instructions)
 msg.config(font=('bold'), width=700, pady=10)
 msg.grid(row=0, column =1, rowspan=2)
@@ -16,6 +30,8 @@ T = tk.Text(root, height=h, width=w, pady=10)
 # T.pack(side=LEFT, fill=Y)
 S.grid(row =2, column =2, rowspan=h)
 T.grid(row=2, column =1, rowspan=h)
+
+T.bind('<Return>', enter)
 
 S.config(command=T.yview)
 T.config(yscrollcommand=S.set)
@@ -30,19 +46,22 @@ That flesh is heir to. 'Tis a consummation
 Devoutly to be wished."""
 T.insert(tk.END, quote)
 
+terms = ['Hamlet', 'nobler', 'suffer', 'slings', 'arrows', 'fortunes']
 # master = Tk()
-var1 = tk.IntVar()
-tk.Checkbutton(root, text="Hamlet", variable=var1).grid(row=2, column =4, sticky=tk.W)
-var2 = tk.IntVar()
-tk.Checkbutton(root, text="nobler", variable=var2).grid(row=3, column =4, sticky=tk.W)
-var3 = tk.IntVar()
-tk.Checkbutton(root, text="suffer", variable=var3).grid(row=4, column =4, sticky=tk.W)
-var4 = tk.IntVar()
-tk.Checkbutton(root, text="slings", variable=var4).grid(row=5, column =4, sticky=tk.W)
-var5 = tk.IntVar()
-tk.Checkbutton(root, text="arrows", variable=var5).grid(row=6, column =4, sticky=tk.W)
-var6 = tk.IntVar()
-tk.Checkbutton(root, text="fortune", variable=var6).grid(row=7, column =4, sticky=tk.W)
+# var1 = tk.IntVar()
+# check1 = tk.Checkbutton(root, text="Hamlet", variable=var1)
+# check1.grid(row=2, column =4, sticky=tk.W)
+# check1.bind('<Button-1>', hello)
 
+for term in terms:
+	var = tk.IntVar()
+	item = tk.Checkbutton(root, text=term, variable=var)
+	x = var
+	item.grid(row=terms.index(term) + 2, column =4, sticky=tk.W)
+
+	def checkedHelp(event, var=var): 
+		return checked(event, var.get())
+	
+	item.bind('<Button-1>', checkedHelp)
 
 tk.mainloop()
